@@ -1,0 +1,19 @@
+Example
+
+// Multiple post task
+{
+    "tasks": [
+        {"title": "Tested 1", "is_completed": true},
+        {"title": "Tested 2", "is_completed": false},
+        {"title": "Tested 3", "is_completed": true}
+    ]
+}
+
+// Multiple delete task
+{
+    "tasks": [
+        {"id": "638a18ac8433d66fee1cb43e"},
+        {"id": "638a18ac8433d66fee1cb43f"},
+        {"id": "638a18ac8433d66fee1cb440"}
+    ]
+}
