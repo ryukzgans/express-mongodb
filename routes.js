@@ -2,25 +2,25 @@ const express = require('express')
 const router = express.Router()
 const Model = require('./model')
 
+const modelData = (res) => {
+    const data = new Model({
+        title: res.title,
+        is_completed: res.is_completed || false
+    })
+    return data
+}
 // POST Multiple / Single task
 router.post('/tasks', async (req, res) => {
     const body = req.body
-    const data = new Model({
-        title: body.title,
-        is_completed: body.is_completed || false
-    })
-
     try {
         if(!body['tasks']){
+            const data = modelData(body)
             const dataSave = await data.save()
             res.status(201).json({id: dataSave.id})
         } else {
             const tempId = new Array()
             body['tasks'].forEach(async task => {
-                const data = new Model({
-                    title: task.title,
-                    is_completed: task.is_completed || false
-                })
+                const data = modelData(task)
                 tempId.push({id: data.id})
                 const dataSave = await data.save()
             })
